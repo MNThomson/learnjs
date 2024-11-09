@@ -3,7 +3,7 @@ Now that you’re familiar with the basics of programming in JavaScript, it’s 
 
 ```js,playground,editable
 // Convert this temperature into Fahrenheit and Kelvin
-const temperatureInCelsius = 27;
+const temperatureInCelsius = 27
 
 // Now write the rest of your code below here…
 ```

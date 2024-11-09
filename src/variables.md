@@ -4,27 +4,28 @@ In JavaScript, variables are used to store data that we want to re use or change
 
 This variable can be changed later on
 ```js
-let var1 = “Hello World”;
+let var1 = "Hello World"
 ```
 
-This variable can not be changed later on due to the “`const`” keyword
+This variable can not be changed later on due to the `const` keyword
 ```js
-const var2 = 3;
+const var2 = 3
 ```
 
 If we want to use these variables later on in our code, we can simply write the variable and it will act as the value stored in it
 
 ```js,playground,editable
-let userName = "Alice";
-const userAge = 20;
-let isMember = true;
+let userName = "Alice"
+const userAge = 20
+let isMember = true
 
-console.log(userName); // Outputs: "Alice"
-console.log(userAge); // Outputs: 20
-console.log(isMember); // Outputs: true
+console.log(userName) // Outputs: "Alice"
+console.log(userAge) // Outputs: 20
+console.log(isMember) // Outputs: true
 
 userName = "Bob"
-console.log(userName); // Outputs “Bob”
+console.log(userName) // Outputs "Bob"
 
-const userAge = 30; // not allowed since the variable is a const
+userAge = 30 // not allowed since the variable is a const
+             // try changing "userAge" to a "let" variable
 ```

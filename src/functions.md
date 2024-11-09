@@ -20,12 +20,12 @@ To use a function, you simply call the name of the function, with the value you 
 
 ```js,playground
 function squareNumber(num) {
-	return num * num;
+	return num * num
 }
 
-const result = squareNumber(4);
-console.log(result); // Outputs 16
-console.log(squareNumber(5)); // Outputs 25
+const result = squareNumber(4)
+console.log(result) // Outputs 16
+console.log(squareNumber(5)) // Outputs 25
 ```
 
 Functions can be extremely useful to help organize code, and shorten the length of your code by saving yourself from repeating. Functions can also take any number of arguments (including 0), and do not have a limit to the # of lines of code you can put in them.

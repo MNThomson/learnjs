@@ -3,6 +3,7 @@
 - [Introduction](./introduction.md)
 - [What is JavaScript](./what_is_js.md)
 - [JavaScript Basics](./js_basics.md)
+    - [Syntax](./syntax.md)
     - [Variables](./variables.md)
     - [Math](./math.md)
     - [Functions](./functions.md)
