@@ -6,5 +6,5 @@ Now that you’re familiar with the basics of programming in JavaScript, it’s 
 const temperatureInCelsius = 27
 
 // Now write the rest of your code below here…
-```
 
+```
