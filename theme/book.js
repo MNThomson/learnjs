@@ -25,23 +25,6 @@ function playground_text(playground, hidden = true) {
         ]);
     }
 
-    var playgrounds = Array.from(document.querySelectorAll(".playground"));
-    if (playgrounds.length > 0) {
-        fetch_with_timeout("https://play.rust-lang.org/meta/crates", {
-            headers: {
-                'Content-Type': "application/json",
-            },
-            method: 'POST',
-            mode: 'cors',
-        })
-            .then(response => response.json())
-            .then(response => {
-                // get list of crates available in the rust playground
-                let playground_crates = response.crates.map(item => item["id"]);
-                playgrounds.forEach(block => handle_crate_list_update(block, playground_crates));
-            });
-    }
-
     function handle_crate_list_update(playground_block, playground_crates) {
         // update the play buttons after receiving the response
         update_play_button(playground_block, playground_crates);
@@ -109,27 +92,26 @@ function playground_text(playground, hidden = true) {
         }
 
         let text = playground_text(code_block);
-        let classes = code_block.querySelector('code').classList;
-        let edition = "2015";
-        if (classes.contains("edition2018")) {
-            edition = "2018";
-        } else if (classes.contains("edition2021")) {
-            edition = "2021";
-        }
-        var params = {
-            version: "stable",
-            optimize: "0",
-            code: text,
-            edition: edition
-        };
-
-        if (text.indexOf("#![feature") !== -1) {
-            params.version = "nightly";
-        }
-
         result_block.innerText = "Running...";
 
-        fetch_with_timeout("https://play.rust-lang.org/evaluate.json", {
+        let params = {
+            "language": "js",
+            "version": "18.15.0",
+            "files": [
+                {
+                    "name": "main.js",
+                    "content": text,
+                }
+            ],
+            "stdin": "",
+            "args": [],
+            "compile_timeout": 10000,
+            "run_timeout": 3000,
+            "compile_memory_limit": -1,
+            "run_memory_limit": -1
+        }
+
+        fetch_with_timeout("https://emkc.org/api/v2/piston/execute", {
             headers: {
                 'Content-Type': "application/json",
             },
@@ -139,16 +121,30 @@ function playground_text(playground, hidden = true) {
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result.trim() === '') {
+                console.log(response)
+                if (response.run.output.trim() === '') {
                     result_block.innerText = "No output";
                     result_block.classList.add("result-no-output");
                 } else {
-                    result_block.innerText = response.result;
+                    result_block.innerText = response.run.output;
                     result_block.classList.remove("result-no-output");
                 }
             })
             .catch(error => result_block.innerText = "Playground Communication: " + error.message);
     }
+
+    // Add <pre class="playground"> to playground codeblock
+    Array.from(document.querySelectorAll(".playground")).forEach((element) => {
+        let parent = element.parentNode;
+        let wrapper = document.createElement('pre');
+        wrapper.className = 'playground';
+        element.classList.remove('playground');
+        // set the wrapper as child (instead of the element)
+        parent.replaceChild(wrapper, element);
+        // set element as child of wrapper
+        wrapper.appendChild(element);
+    });
+
 
     // Syntax highlighting Configuration
     hljs.configure({
@@ -160,6 +156,12 @@ function playground_text(playground, hidden = true) {
         .from(document.querySelectorAll('code'))
         // Don't highlight `inline code` blocks in headers.
         .filter(function(node) { return !node.parentElement.classList.contains("header"); });
+
+    // language-rust class needs to be removed for editable
+    // blocks or highlightjs will capture events
+    code_nodes
+        .filter(function(node) { return node.classList.contains("editable"); })
+        .forEach(function(block) { block.classList.remove('language-rust'); });
 
     if (window.ace) {
         // language-rust class needs to be removed for editable
