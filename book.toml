@@ -1,0 +1,6 @@
+[book]
+authors = ["Max Thomson"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Learn JS"
