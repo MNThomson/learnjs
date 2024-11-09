@@ -27,7 +27,7 @@ function printDataForCircle(radius) {
 
 printDataForCircle(1)
 printDataForCircle(2)
-printDataForCircle(10)
+printDataForCircle(4)
 ```
 
 Notice that because of the use of functions, to calculate the area and circumference of a circle with `radius = 11`, only one more line of code is required:
