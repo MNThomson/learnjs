@@ -10,13 +10,13 @@ Doing math in javascript is just about as simple as doing math with a pen and pa
 
 Using the operators is also about as simple as one would imagine it would be
 
-```js,playground
+```js,playground,editable
 console.log(2 + 2) // This outputs "4"
 ```
 
 In most cases, when we want to do math in our javascript programs, it will be with a dynamic value that the user inputs, represented by a variable. Applying what we just learned about variables, let's look at some examples using variables to both hold the numbers and store the result
 
-```js,playground
+```js,playground,editable
 const number1 = 10
 const number2 = 4
 
@@ -37,13 +37,13 @@ There are two more operators that are quite common: `++` and `--`. These are sho
 
 The lines of code shown in the two examples below are equivalent
 
-```js,playground
+```js,playground,editable
 let total = 0
 total = total + 1
 console.log(total) // Outputs 1
 ```
 
-```js,playground
+```js,playground,editable
 let total = 0
 total++
 console.log(total) // Outputs 1
@@ -51,13 +51,13 @@ console.log(total) // Outputs 1
 
 The same is true for the decrementation operator
 
-```js,playground
+```js,playground,editable
 let total = 10
 total = total - 1
 console.log(total) // Outputs 9
 ```
 
-```js,playground
+```js,playground,editable
 let total = 10
 total--
 console.log(total) // Outputs 9

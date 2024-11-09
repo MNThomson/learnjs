@@ -2,7 +2,7 @@
 
 To start your Javascript learning adventure, let’s take a look at the most basic program we can write: A program that prints out the words `Hello World`
 
-```js,playground
+```js,playground,editable
 console.log("Hello")
 ```
 
@@ -17,7 +17,7 @@ Booleans are values that are always true or false. These are represented with th
 
 The last core concept to understand is code comments, denoted with a `//`. Comments are for writing things in our file without having our computer think its supposed to be code. Comments are often used to describe what certain code does or provide other background information on the code.
 
-```js,playground
+```js,playground,editable
 console.log("Hello World")
 // Prints the text "Hello World"
 ```

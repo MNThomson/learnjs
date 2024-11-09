@@ -1,7 +1,7 @@
 # JavaScript Basics
 Ok, so let’s actually write a "program". A simple program would be on that just says `hello` back, so let’s do that!
 
-```js,playground
+```js,playground,editable
 console.log("Hello")
 ```
 
